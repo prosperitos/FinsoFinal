@@ -241,4 +241,9 @@ class Structure
     {
         return $this->siteweb;
     }
+
+    public function __toString() { 
+    return $this->nom;
+    }
+
 }

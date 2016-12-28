@@ -11,7 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AccueilBundle\Repository\UtilisateurRepository")
  */
 class Utilisateur
-{
+{ 
+
+     /**
+   * @ORM\ManyToOne(targetEntity="Structure", cascade={"persist", "remove"})
+   * @ORM\JoinColumn(name="structure_id", referencedColumnName="id")
+   */
+    protected $structure;
+    
     /**
      * @var int
      *
@@ -180,5 +187,28 @@ class Utilisateur
     public function getTelephone()
     {
         return $this->telephone;
+    }
+
+    /**
+     * Set structure
+     *
+     * @param \AccueilBundle\Entity\Structure $structure
+     * @return Utilisateur
+     */
+    public function setStructure(\AccueilBundle\Entity\Structure $structure )
+    {
+        $this->structure = $structure;
+
+        return $this;
+    }
+
+    /**
+     * Get structure
+     *
+     * @return \AccueilBundle\Entity\Structure 
+     */
+    public function getStructure()
+    {
+        return $this->structure;
     }
 }

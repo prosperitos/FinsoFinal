@@ -1,3 +1,31 @@
+accueil_utilisateur:
+    resource: "@AccueilBundle/Resources/config/routing/utilisateur.yml"
+    prefix:   /utilisateur
+
+accueil_projet:
+    resource: "@AccueilBundle/Resources/config/routing/projet.yml"
+    prefix:   /projet
+
+accueil_category:
+    resource: "@AccueilBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+accueil_structure:
+    resource: "@AccueilBundle/Resources/config/routing/structure.yml"
+    prefix:   /structure
+
+accueil_media:
+    resource: "@AccueilBundle/Resources/config/routing/media.yml"
+    prefix:   /media
+
+accueil_contributeur:
+    resource: "@AccueilBundle/Resources/config/routing/contributeur.yml"
+    prefix:   /contributeur
+
+accueil_contribution:
+    resource: "@AccueilBundle/Resources/config/routing/contribution.yml"
+    prefix:   /contribution
+
 accueil_homepage:
     path:     /
     defaults: { _controller: AccueilBundle:Default:index }

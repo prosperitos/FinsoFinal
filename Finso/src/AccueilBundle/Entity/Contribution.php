@@ -11,15 +11,21 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AccueilBundle\Repository\ContributionRepository")
  */
 class Contribution
-{
+{   
+
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
+   * @ORM\Id
+   * @ORM\ManyToOne(targetEntity="Projet")
+   */
+    private $projet;
+
+
+    /**
+   * @ORM\Id
+   * @ORM\ManyToOne(targetEntity="Contributeur")
+   */
+    private $Contributeur;
+
 
     /**
      * @var string
@@ -90,5 +96,51 @@ class Contribution
     public function getTypepayement()
     {
         return $this->typepayement;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param \AccueilBundle\Entity\Projet $projet
+     * @return Contribution
+     */
+    public function setProjet(\AccueilBundle\Entity\Projet $projet)
+    {
+        $this->projet = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \AccueilBundle\Entity\Projet 
+     */
+    public function getProjet()
+    {
+        return $this->projet;
+    }
+
+    /**
+     * Set Contributeur
+     *
+     * @param \AccueilBundle\Entity\Contributeur $contributeur
+     * @return Contribution
+     */
+    public function setContributeur(\AccueilBundle\Entity\Contributeur $contributeur)
+    {
+        $this->Contributeur = $contributeur;
+
+        return $this;
+    }
+
+    /**
+     * Get Contributeur
+     *
+     * @return \AccueilBundle\Entity\Contributeur 
+     */
+    public function getContributeur()
+    {
+        return $this->Contributeur;
     }
 }

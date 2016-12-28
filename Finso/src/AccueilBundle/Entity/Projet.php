@@ -11,7 +11,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AccueilBundle\Repository\ProjetRepository")
  */
 class Projet
-{
+{   
+
+
+    /**
+   * @ORM\ManyToOne(targetEntity="Utilisateur", cascade={"persist"})
+   * @ORM\JoinColumn(name="utilisateur_id", referencedColumnName="id")
+   */
+    protected $utilisateur;
+
     /**
      * @var int
      *
@@ -120,5 +128,28 @@ class Projet
     public function getMontant()
     {
         return $this->montant;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \AccueilBundle\Entity\Utilisateur $utilisateur
+     * @return Projet
+     */
+    public function setUtilisateur(\AccueilBundle\Entity\Utilisateur $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \AccueilBundle\Entity\Utilisateur 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
     }
 }

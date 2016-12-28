@@ -11,7 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AccueilBundle\Repository\MediaRepository")
  */
 class Media
-{
+{   
+
+
+    /**
+   * @ORM\ManyToOne(targetEntity="Projet", cascade={"persist"})
+   * @ORM\JoinColumn(name="projet_id", referencedColumnName="id")
+   */
+    protected $projet;
+
+
     /**
      * @var int
      *
@@ -120,5 +129,28 @@ class Media
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set projet
+     *
+     * @param \AccueilBundle\Entity\Projet $projet
+     * @return Media
+     */
+    public function setProjet(\AccueilBundle\Entity\Projet $projet = null)
+    {
+        $this->projet = $projet;
+
+        return $this;
+    }
+
+    /**
+     * Get projet
+     *
+     * @return \AccueilBundle\Entity\Projet 
+     */
+    public function getProjet()
+    {
+        return $this->projet;
     }
 }
